@@ -16,6 +16,8 @@ export default function RecentTokenList() {
 			data={images} 
 			renderItem={({ item }) => <RecentTokenItem token={item}/>}
 			keyExtractor={i => i}
+			style={{ maxHeight: 210 }}
+			showsHorizontalScrollIndicator={false}
 		/>
 	)
 }
