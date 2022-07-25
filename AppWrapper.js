@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ScanScreen from "./src/screens/ScanScreen";
 import MerchantScreen from "./src/screens/MerchantScreen";
 import TokensScreen from "./src/screens/TokensScreen";
+import TokenScreen from "./src/screens/TokenScreen";
 
 const Stack = createNativeStackNavigator()
 
@@ -18,6 +19,7 @@ export default function AppWrapper() {
 			<Stack.Screen name="Scan" component={ScanScreen}/>
 			<Stack.Screen name="Merchants" component={MerchantScreen}/>
 			<Stack.Screen name="Tokens" component={TokensScreen}/>
+			<Stack.Screen name="Token" component={TokenScreen}/>
 		</Stack.Navigator>
 	)
 }
