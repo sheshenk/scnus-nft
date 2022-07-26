@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
 import { useWalletConnect } from "react-native-walletconnect";
 import LogoutModal from "../components/auth/LogoutModal";
@@ -7,8 +7,10 @@ import HomeBodyContainer from "../components/home/HomeBodyContainer";
 import HomeHeader from "../components/home/HomeHeader";
 import RecentTokenView from "../components/recent-tokens/RecentTokenView";
 import TierView from "../components/tier/TierView";
+import { UserContext, useUserContext } from "../services/userContextProvider";
 
 export default function HomeScreen() {
+	const { user, setUser } = useUserContext()
 	const { session } = useWalletConnect()
 	const [logoutVisible, setLogoutVisible] = useState(false)
 	const navigation = useNavigation()
