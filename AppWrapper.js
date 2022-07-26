@@ -1,7 +1,6 @@
-import { useWalletConnect } from "react-native-walletconnect";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AuthScreen from "./src/screens/AuthScreen";
 import HomeScreen from "./src/screens/HomeScreen";
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ScanScreen from "./src/screens/ScanScreen";
 import MerchantScreen from "./src/screens/MerchantScreen";
 import TokensScreen from "./src/screens/TokensScreen";
@@ -11,10 +10,8 @@ import MerchantsScreen from "./src/screens/MerchantsScreen";
 const Stack = createNativeStackNavigator()
 
 export default function AppWrapper() {
-	const { session } = useWalletConnect()
-	const hasWallet = !!session.length
 	return (
-		<Stack.Navigator initialRouteName={!hasWallet ? 'Authentication' : 'Home'}>
+		<Stack.Navigator initialRouteName={'Authentication'}>
 			<Stack.Screen name="Authentication" component={AuthScreen} options={{ headerShown: false, animation: 'none' }}/>
 			<Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false, animation: 'none' }}/>
 			<Stack.Screen name="Scan" component={ScanScreen} options={{ headerShown: false }}/>
