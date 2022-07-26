@@ -1,21 +1,15 @@
 import { FlatList } from "react-native";
+import { SAMPLE_TOKENS } from "../../constants/sampleData";
 import RecentTokenItem from "./RecentTokenItem";
-
-const images = [
-	"https://picsum.photos/seed/abc/200",
-	"https://picsum.photos/seed/def/200",
-	"https://picsum.photos/seed/ghi/200",
-	"https://picsum.photos/seed/jkl/200"
-]
 
 export default function RecentTokenList() {
 	return (
 		<FlatList 
-			contentContainerStyle={{ paddingHorizontal: 30, paddingVertical: 24 }} 
+			contentContainerStyle={{ paddingHorizontal: 30, paddingVertical: 24, paddingBottom: 48 }} 
 			horizontal 
-			data={images} 
+			data={SAMPLE_TOKENS.slice(0, 3)} 
 			renderItem={({ item }) => <RecentTokenItem token={item}/>}
-			keyExtractor={i => i}
+			keyExtractor={i => i.hash}
 			style={{ maxHeight: 210 }}
 			showsHorizontalScrollIndicator={false}
 		/>
