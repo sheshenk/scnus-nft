@@ -13,9 +13,10 @@ export default function TokenScreen({ route }) {
 			<ScrollView bounces={false}>
 				<Image source={{ uri: token.image }} style={{ width: imageWidth, height: imageWidth }}/>
 				<LinearGradient style={{ position: 'absolute', width: imageWidth, height: imageWidth }} colors={['rgba(0,0,0,0.7)', 'transparent', 'transparent', 'transparent']}/>
-				<View style={{ padding: 30 }}>
+				<View style={{ padding: 30, backgroundColor: '#fff', marginTop: -20, borderRadius: 20 }}>
 					<Text style={{ fontSize: 28, fontWeight: 'bold' }}>{token.name}</Text>
-					<Text style={{ fontSize: 12, marginTop: 8, opacity: 0.6, letterSpacing: 0.5, textTransform: 'uppercase' }}>Minted By You: 21/07/2022, 08:55 PM</Text>
+					<Text style={{ fontSize: 12, marginTop: 12, opacity: 0.6, letterSpacing: 0.5, textTransform: 'uppercase' }}>Minted By You: 21/07/2022, 08:55 PM</Text>
+					<Text style={{ fontSize: 12, marginTop: 4, opacity: 0.6, letterSpacing: 0.5 }}>HASH: {token.hash}</Text>
 					<Text style={{ fontSize: 18, lineHeight: 16 * 1.618, marginTop: 24 }}>{token.description}</Text>
 					<View style={{ display: 'flex', flexDirection: 'row', marginTop: 32, marginBottom: 64 }}>
 						<TouchableOpacity onPress={() => Linking.openURL(token.website)} activeOpacity={0.8} style={{ backgroundColor: '#364378', padding: 12, borderRadius: 8 }}>
