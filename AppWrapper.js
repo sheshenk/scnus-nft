@@ -18,8 +18,8 @@ export default function AppWrapper() {
 			<Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false, animation: 'none' }}/>
 			<Stack.Screen name="Scan" component={ScanScreen}/>
 			<Stack.Screen name="Merchants" component={MerchantScreen}/>
-			<Stack.Screen name="Tokens" component={TokensScreen}/>
-			<Stack.Screen name="Token" component={TokenScreen}/>
+			<Stack.Screen name="Tokens" component={TokensScreen} options={{ headerShown: false }}/>
+			<Stack.Screen name="Token" component={TokenScreen} options={{ headerShown: false }}/>
 		</Stack.Navigator>
 	)
 }
