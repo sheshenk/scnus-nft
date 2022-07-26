@@ -1,4 +1,4 @@
-import { Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Dimensions, Image, ScrollView, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import logo from '../../assets/logo.png'
 import { useUserContext } from "../services/userContextProvider";
 
@@ -8,6 +8,7 @@ export default function AuthScreen() {
 	if (user === undefined) return <></>
 	return (
 			<View style={{ flex: 1, backgroundColor: '#ffffff' }}>
+				<StatusBar barStyle='dark-content'/>
 				<View style={{ backgroundColor: '#dcdde1', width: '100%', alignItems: 'center', justifyContent: 'center', paddingTop: viewportHeight * 0.1, paddingBottom: viewportHeight * 0.2 }}>
 					<Image source={logo} style={{ width: viewportHeight / 5, height: viewportHeight / 5, marginTop: -20 }}/>
 				</View>

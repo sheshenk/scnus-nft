@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native"
-import { Dimensions, FlatList, Image, SafeAreaView, Text, TouchableOpacity, View } from "react-native"
+import { Dimensions, FlatList, Image, SafeAreaView, StatusBar, Text, TouchableOpacity, View } from "react-native"
 import back from '../../assets/icons/back.png'
 import { SAMPLE_MERCHANTS } from "../constants/sampleMerchants"
 
@@ -23,6 +23,7 @@ export default function MerchantsScreen() {
 	const navigation = useNavigation()
 	return (
 		<>
+			<StatusBar barStyle='dark-content'/>
 			<SafeAreaView style={{ backgroundColor: '#ecf0f1' }}>
 				<View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: 20 }}>
 					<TouchableOpacity activeOpacity={0.8} onPress={() => navigation.goBack()}>
