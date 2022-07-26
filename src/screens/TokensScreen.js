@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { Dimensions, FlatList, Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import back from '../../assets/icons/back.png'
-import { SAMPLE_TOKENS } from "../constants/sampleData";
+import { SAMPLE_OWNED_TOKENS } from "../constants/sampleTokens";
 
 const TokenItem = (props) => {
 	const viewportWidth = Dimensions.get('window').width
@@ -33,7 +33,7 @@ export default function TokensScreen() {
 			</SafeAreaView>
 			<FlatList
 				contentContainerStyle={{ paddingVertical: 12, paddingBottom: 48 }} 
-				data={SAMPLE_TOKENS}
+				data={SAMPLE_OWNED_TOKENS}
 				renderItem={({ item }) => <TokenItem token={item}/>}
 				keyExtractor={i => i.hash}
 				showsVerticalScrollIndicator={false}
