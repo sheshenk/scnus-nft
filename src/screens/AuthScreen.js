@@ -1,17 +1,13 @@
-import { useNavigation } from "@react-navigation/native";
+import { StackActions, useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
 import { Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { useWalletConnect } from "react-native-walletconnect";
 import logo from '../../assets/logo.png'
+import { useUserContext } from "../services/userContextProvider";
 
 export default function AuthScreen() {
-	const { session, createSession } = useWalletConnect()
+	const { user, login } = useUserContext()
 	const viewportHeight = Dimensions.get('window').height
-	const navigation = useNavigation()
-	useEffect(() => {
-		const hasWallet = !!session.length
-		if (hasWallet) navigation.navigate('Home')
-	}, [session])
+	if (user === undefined) return <></>
 	return (
 			<View style={{ flex: 1, backgroundColor: '#ffffff' }}>
 				<View style={{ backgroundColor: '#dcdde1', width: '100%', alignItems: 'center', justifyContent: 'center', paddingTop: viewportHeight * 0.1, paddingBottom: viewportHeight * 0.2 }}>
@@ -24,7 +20,7 @@ export default function AuthScreen() {
 						<Text style={{ fontSize: 18, marginTop: 36, textAlign: 'center' }}>ScaNUS is the first app of its kind that offers NFT rewards for engagement with event information.</Text>
 						<Text style={{ fontSize: 18, marginTop: 24, textAlign: 'center' }}>Scan and collect tokens, and enjoy rewards from over 15 F&#38;B outlets.</Text>
 						<View style={{ width: '100%', position: 'absolute', height: 110, top: '100%' }}>
-							<TouchableOpacity onPress={createSession} activeOpacity={0.8} style={{ backgroundColor: '#F3904F', marginTop: 48, width: '100%', padding: 20, borderRadius: 12, shadowRadius: 20, shadowColor: '#000', shadowOpacity: 0.2, shadowOffset: { height: 12 } }}>
+							<TouchableOpacity onPress={login} activeOpacity={0.8} style={{ backgroundColor: '#F3904F', marginTop: 48, width: '100%', padding: 20, borderRadius: 12, shadowRadius: 20, shadowColor: '#000', shadowOpacity: 0.2, shadowOffset: { height: 12 } }}>
 								<Text style={{ color: '#fff', textAlign: 'center', fontSize: 16, fontWeight: 'bold' }}>Connect Wallet</Text>
 							</TouchableOpacity>
 							<Text style={{ textAlign: 'center', fontSize: 14, marginTop: 16, opacity: 0.3 }}>We recommend using the MetaMask wallet!</Text>

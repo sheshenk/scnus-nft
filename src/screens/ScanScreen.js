@@ -23,6 +23,7 @@ export default function ScanScreen() {
 			setTokenToMint(mapped)
 		}
 	}
+	// ADD PERMISSION CONDITIONAL RETURNS
 	return (
 		<>
 		<MintModal token={tokenToMint} close={() => setTokenToMint(null)}/>

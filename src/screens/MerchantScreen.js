@@ -1,11 +1,9 @@
 import { useNavigation } from "@react-navigation/native"
-import { LinearGradient } from "expo-linear-gradient"
-import { Dimensions, Image, Linking, SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from "react-native"
+import { Image, SafeAreaView, Text, TouchableOpacity, View } from "react-native"
 import back from '../../assets/icons/back.png'
 
 export default function MerchantScreen({ route }) {
 	const { merchant } = route.params
-	const imageWidth = Dimensions.get('window').width
 	const navigation = useNavigation()
 	return (
 		<>
@@ -34,7 +32,7 @@ export default function MerchantScreen({ route }) {
 					<Text style={{ fontSize: 24, fontWeight: 'bold', marginTop: 36, opacity: 0.6 }}>Terms</Text>
 					{
 						merchant.terms.map((t, i) => (
-							<Text style={{ fontSize: 18, lineHeight: 16*1.618, marginTop: 12 }}>{i+1}. {t}</Text>
+							<Text key={i} style={{ fontSize: 18, lineHeight: 16*1.618, marginTop: 12 }}>{i+1}. {t}</Text>
 						))
 					}
 				</View>

@@ -6,11 +6,11 @@ import UserContextProvider from "./src/services/userContextProvider";
 export default function App() {
 	return (
 		<WalletConnectProvider>
-			<UserContextProvider>
 				<NavigationContainer>
-					<AppWrapper/>
+					<UserContextProvider>
+						<AppWrapper/>
+					</UserContextProvider>
 				</NavigationContainer>
-			</UserContextProvider>
 		</WalletConnectProvider>
 	)
 }
