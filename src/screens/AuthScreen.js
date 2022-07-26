@@ -1,5 +1,3 @@
-import { StackActions, useNavigation } from "@react-navigation/native";
-import { useEffect } from "react";
 import { Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import logo from '../../assets/logo.png'
 import { useUserContext } from "../services/userContextProvider";

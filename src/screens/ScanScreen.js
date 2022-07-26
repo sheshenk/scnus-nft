@@ -5,12 +5,13 @@ import { useEffect, useState } from "react"
 import { Image, SafeAreaView, StatusBar, TouchableOpacity, View } from "react-native"
 import back from '../../assets/icons/back.png'
 import MintModal from "../components/mint/MintModal"
-import { SAMPLE_UNOWNED_TOKENS } from "../constants/sampleTokens"
+import { useUserContext } from "../services/userContextProvider"
 
 export default function ScanScreen() {
 	const [hasPermission, setHasPermission] = useState(null)
 	const [tokenToMint, setTokenToMint] = useState(null)
 	const navigation = useNavigation()
+	const { user } = useUserContext()
 	useEffect(() => {
 		(async () => {
 			const { status } = await BarCodeScanner.requestPermissionsAsync()
@@ -18,11 +19,12 @@ export default function ScanScreen() {
 		})()
 	}, [])
 	const handleScan = ({ data }) => {
-		const mapped = SAMPLE_UNOWNED_TOKENS.find(t => t.hash === data)
+		const mapped = user.unownedTokens.find(t => t.hash === data)
 		if (!tokenToMint && mapped) {
 			setTokenToMint(mapped)
 		}
 	}
+	if (!user) return <></>
 	// ADD PERMISSION CONDITIONAL RETURNS
 	return (
 		<>

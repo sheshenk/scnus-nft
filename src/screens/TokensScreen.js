@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
-import { Dimensions, FlatList, Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Dimensions, FlatList, Image, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import back from '../../assets/icons/back.png'
-import { SAMPLE_OWNED_TOKENS } from "../constants/sampleTokens";
+import { useUserContext } from "../services/userContextProvider";
 
 const TokenItem = (props) => {
 	const viewportWidth = Dimensions.get('window').width
@@ -21,6 +21,8 @@ const TokenItem = (props) => {
 
 export default function TokensScreen() {
 	const navigation = useNavigation()
+	const { user } = useUserContext()
+	if (!user) return <></>
 	return (
 		<>
 			<SafeAreaView style={{ backgroundColor: '#ecf0f1' }}>
@@ -33,7 +35,7 @@ export default function TokensScreen() {
 			</SafeAreaView>
 			<FlatList
 				contentContainerStyle={{ paddingVertical: 12, paddingBottom: 48 }} 
-				data={SAMPLE_OWNED_TOKENS}
+				data={user.ownedTokens}
 				renderItem={({ item }) => <TokenItem token={item}/>}
 				keyExtractor={i => i.hash}
 				showsVerticalScrollIndicator={false}

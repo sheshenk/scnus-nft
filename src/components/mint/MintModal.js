@@ -1,9 +1,18 @@
 import { Image, Modal, Text, TouchableOpacity, View } from "react-native";
 import close from '../../../assets/icons/x.png'
+import { useUserContext } from "../../services/userContextProvider";
 
 export default function MintModal(props) {
+	const { user, setUser } = useUserContext()
 	const mint = () => {
-		props.close()
+		if (props.token && user) {
+			setUser({
+				...user, 
+				ownedTokens: [props.token, ...user.ownedTokens],
+				unownedTokens: user.unownedTokens.filter(t => t.hash != props.token.hash)
+			})
+			props.close()
+		}
 	}
 	return (
 		<Modal visible={!!props.token} transparent={true} onRequestClose={props.close}>

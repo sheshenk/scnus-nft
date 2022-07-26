@@ -3,12 +3,14 @@ import scan from '../../../assets/icons/scan.png'
 import merchant from '../../../assets/icons/merchant.png'
 import ActionButton from "./ActionButton";
 import { getCurrentTier, getNextTier } from "../../utils/tierUtils";
-import { SAMPLE_OWNED_TOKENS } from "../../constants/sampleTokens";
+import { useUserContext } from "../../services/userContextProvider";
 
 export default function TierCard() {
-	const currentTier = getCurrentTier(SAMPLE_OWNED_TOKENS)
-	const nextTier = getNextTier(SAMPLE_OWNED_TOKENS)
-	const currOwned = SAMPLE_OWNED_TOKENS.length
+	const { user } = useUserContext()
+	if (!user) return <></>
+	const currentTier = getCurrentTier(user.ownedTokens)
+	const nextTier = getNextTier(user.ownedTokens)
+	const currOwned = user.ownedTokens.length
 	const ownedInTier = currOwned - currentTier.req
 	const remainder = nextTier ? nextTier.req - currOwned : currentTier.req + 5 - currOwned
 	const totalTierTokens = nextTier ? nextTier.req - currentTier.req : 5
